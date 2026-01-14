@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Gunjan Chimariya</title>
+    <meta name="description" content="Explore Gunjan Chimariya's cybersecurity projects, including network security tools, cloud automation, and machine learning applications.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Chiron+Hei+HK:wght@400;700&family=Hedvig+Letters+Sans:wght@400;700&family=Quattrocento+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    
+    <style>
+        :root {
+            --bg-primary: #0D1117;
+            --color-primary: #58A6FF;
+            --color-secondary: #8B949E;
+            --color-accent: #3FB950;
+            --text-light: #C9D1D9;
+            --text-dark: #1F2328;
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-light);
+            font-family: 'Quattrocento Sans', sans-serif;
+        }
+        
+        .font-heading {
+            font-family: 'Chiron Hei HK', sans-serif;
+        }
+        
+        .font-display {
+            font-family: 'Hedvig Letters Sans', sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(13, 17, 23, 0.95), rgba(13, 17, 23, 0.85));
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(88, 166, 255, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .section-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: var(--color-primary);
+            color: white;
+        }
+        
+        .project-item {
+            transition: all 0.3s ease;
+        }
+        
+        .tech-badge {
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--color-primary);
+            border: 1px solid rgba(88, 166, 255, 0.3);
+        }
+        
+        .project-overlay {
+            background: linear-gradient(to top, rgba(13, 17, 23, 0.9), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-item:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: var(--bg-primary);
+            border: 1px solid #30363D;
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-sm border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-heading text-xl font-bold text-white">
+                    <a href="index.html">Gunjan Chimariya</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-white">Home</a>
+                    <a href="about.html" class="nav-link text-gray-300 hover:text-white">About</a>
+                    <a href="projects.html" class="nav-link text-white">Projects</a>
+                    <a href="contact.html" class="nav-link text-gray-300 hover:text-white">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-300 hover:text-white">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-300 hover:text-white">About</a>
+                <a href="projects.html" class="block px-3 py-2 text-white">Projects</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-300 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="section-reveal">
+                <h1 class="font-display text-5xl md:text-6xl font-bold mb-6">
+                    My Projects
+                </h1>
+                <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    A showcase of cybersecurity tools, cloud infrastructure automation, and machine learning applications 
+                    that demonstrate my technical expertise and problem-solving capabilities.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Filter -->
+    <section class="py-12 bg-gray-800/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-4 section-reveal">
+                <button class="filter-btn active px-6 py-2 rounded-full border border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white" data-filter="*">
+                    All Projects
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white" data-filter=".security">
+                    Security
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white" data-filter=".cloud">
+                    Cloud
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white" data-filter=".automation">
+                    Automation
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white" data-filter=".ml">
+                    Machine Learning
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Network Security Assessment Tools -->
+                <div class="project-item security bg-gray-800 rounded-lg overflow-hidden card-hover section-reveal" data-category="security">
+                    <div class="relative h-48">
+                        <img src="resources/project-security.png" alt="Network Security Assessment" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 flex items-end p-6">
+                            <div>
+                                <h3 class="font-heading text-xl font-bold mb-2">Network Security Assessment</h3>
+                                <p class="text-gray-300 text-sm">Comprehensive security auditing toolkit</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-400 mb-4">
+                            Developed automated security assessment tools for network vulnerability scanning, 
+                            penetration testing, and compliance checking in enterprise environments.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Nmap</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Metasploit</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Bash</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <button class="text-blue-400 hover:text-blue-300 font-semibold" onclick="openModal('project1')">
+                                View Details
+                            </button>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-gray-400 hover:text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Infrastructure Automation -->
+                <div class="project-item cloud automation bg-gray-800 rounded-lg overflow-hidden card-hover section-reveal" data-category="cloud automation">
+                    <div class="relative h-48">
+                        <img src="resources/project-cloud.png" alt="Cloud Infrastructure Automation" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 flex items-end p-6">
+                            <div>
+                                <h3 class="font-heading text-xl font-bold mb-2">Cloud Infrastructure Automation</h3>
+                                <p class="text-gray-300 text-sm">AWS-based automated deployment system</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-400 mb-4">
+                            Built automated cloud infrastructure deployment and management system using Infrastructure as Code 
+                            principles for scalable and secure cloud environments.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">AWS</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Terraform</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Docker</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <button class="text-blue-400 hover:text-blue-300 font-semibold" onclick="openModal('project2')">
+                                View Details
+                            </button>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-gray-400 hover:text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Credit Card Fraud Detection -->
+                <div class="project-item ml bg-gray-800 rounded-lg overflow-hidden card-hover section-reveal" data-category="ml">
+                    <div class="relative h-48">
+                        <img src="resources/project-ml.png" alt="Credit Card Fraud Detection" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 flex items-end p-6">
+                            <div>
+                                <h3 class="font-heading text-xl font-bold mb-2">Credit Card Fraud Detection</h3>
+                                <p class="text-gray-300 text-sm">ML-based fraud detection system</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-400 mb-4">
+                            Developed machine learning model for detecting credit card fraud using advanced algorithms 
+                            and real-time data analysis to minimize false positives and improve accuracy.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Scikit-learn</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">TensorFlow</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Pandas</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <button class="text-blue-400 hover:text-blue-300 font-semibold" onclick="openModal('project3')">
+                                View Details
+                            </button>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-gray-400 hover:text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vulnerability Management System -->
+                <div class="project-item security automation bg-gray-800 rounded-lg overflow-hidden card-hover section-reveal" data-category="security automation">
+                    <div class="relative h-48">
+                        <img src="resources/project-security.png" alt="Vulnerability Management System" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 flex items-end p-6">
+                            <div>
+                                <h3 class="font-heading text-xl font-bold mb-2">Vulnerability Management System</h3>
+                                <p class="text-gray-300 text-sm">Enterprise vulnerability tracking platform</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-400 mb-4">
+                            Built comprehensive vulnerability management platform with automated scanning, 
+                            risk assessment, and remediation tracking for enterprise environments.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Django</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">PostgreSQL</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">React</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <button class="text-blue-400 hover:text-blue-300 font-semibold" onclick="openModal('project4')">
+                                View Details
+                            </button>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-gray-400 hover:text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Monitoring Dashboard -->
+                <div class="project-item security automation bg-gray-800 rounded-lg overflow-hidden card-hover section-reveal" data-category="security automation">
+                    <div class="relative h-48">
+                        <img src="resources/project-security.png" alt="Security Monitoring Dashboard" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 flex items-end p-6">
+                            <div>
+                                <h3 class="font-heading text-xl font-bold mb-2">Security Monitoring Dashboard</h3>
+                                <p class="text-gray-300 text-sm">Real-time security event monitoring</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-400 mb-4">
+                            Created real-time security monitoring dashboard with threat detection, incident response 
+                            workflows, and comprehensive analytics for security operations centers.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">ELK Stack</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Redis</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Vue.js</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <button class="text-blue-400 hover:text-blue-300 font-semibold" onclick="openModal('project5')">
+                                View Details
+                            </button>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-gray-400 hover:text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automated Backup System -->
+                <div class="project-item cloud automation bg-gray-800 rounded-lg overflow-hidden card-hover section-reveal" data-category="cloud automation">
+                    <div class="relative h-48">
+                        <img src="resources/project-cloud.png" alt="Automated Backup System" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 flex items-end p-6">
+                            <div>
+                                <h3 class="font-heading text-xl font-bold mb-2">Automated Backup System</h3>
+                                <p class="text-gray-300 text-sm">Multi-cloud backup automation</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-400 mb-4">
+                            Implemented automated backup and disaster recovery system with cross-cloud replication, 
+                            encryption, and point-in-time recovery capabilities.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">AWS S3</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Azure Blob</span>
+                            <span class="tech-badge px-3 py-1 rounded-full text-xs">Cron</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <button class="text-blue-400 hover:text-blue-300 font-semibold" onclick="openModal('project6')">
+                                View Details
+                            </button>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-gray-400 hover:text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="section-reveal">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">
+                    Interested in Collaborating?
+                </h2>
+                <p class="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
+                    I'm always excited to work on innovative cybersecurity projects and contribute to open-source initiatives.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+                        Start a Project
+                    </a>
+                    <a href="about.html" class="border-2 border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+                        Learn More About Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modals -->
+    <div id="project1" class="modal">
+        <div class="modal-content p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="font-heading text-3xl font-bold">Network Security Assessment Tools</h2>
+                <button onclick="closeModal('project1')" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <p class="text-gray-300">
+                    A comprehensive suite of automated security assessment tools designed for enterprise network environments. 
+                    This project includes vulnerability scanners, penetration testing utilities, and compliance checking mechanisms.
+                </p>
+                <h3 class="font-heading text-xl font-bold">Key Features:</h3>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                    <li>Automated network discovery and port scanning</li>
+                    <li>Vulnerability assessment with CVSS scoring</li>
+                    <li>Compliance checking against security frameworks</li>
+                    <li>Detailed reporting with remediation recommendations</li>
+                    <li>Integration with SIEM systems</li>
+                </ul>
+                <h3 class="font-heading text-xl font-bold">Technical Implementation:</h3>
+                <p class="text-gray-300">
+                    Built using Python with integration of industry-standard tools like Nmap, Metasploit Framework, 
+                    and custom vulnerability databases. The system uses multi-threading for efficient scanning and 
+                    implements secure communication protocols for agent-based deployments.
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="tech-badge px-3 py-1 rounded-full text-xs">Python</span>
+                    <span class="tech-badge px-3 py-1 rounded-full text-xs">Nmap</span>
+                    <span class="tech-badge px-3 py-1 rounded-full text-xs">Metasploit</span>
+                    <span class="tech-badge px-3 py-1 rounded-full text-xs">Bash</span>
+                    <span class="tech-badge px-3 py-1 rounded-full text-xs">PostgreSQL</span>
+                    <span class="tech-badge px-3 py-1 rounded-full text-xs">Redis</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-700 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex justify-center space-x-6 mb-4">
+                    <a href="mailto:chimariya.gunjan@gmail.com" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/chimariya-gunjan" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-gray-400 text-sm">
+                    © 2024 Gunjan Chimariya. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Project Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectsGrid = document.getElementById('projects-grid');
+        
+        // Initialize Isotope
+        const iso = new Isotope(projectsGrid, {
+            itemSelector: '.project-item',
+            layoutMode: 'masonry'
+        });
+        
+        // Filter functionality
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Filter items
+                const filterValue = this.getAttribute('data-filter');
+                iso.arrange({ filter: filterValue });
+            });
+        });
+
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                closeModal(e.target.id);
+            }
+        });
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with section-reveal class
+        document.querySelectorAll('.section-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Page load animation
+        window.addEventListener('load', function() {
+            anime({
+                targets: 'body',
+                opacity: [0, 1],
+                duration: 1000,
+                easing: 'easeOutQuart'
+            });
+        });
+    </script>
+</body>
+</html>

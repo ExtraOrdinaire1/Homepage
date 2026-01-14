@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Gunjan Chimariya</title>
+    <meta name="description" content="Learn about Gunjan Chimariya's professional journey from Nepal to Canada, expertise in cybersecurity, and passion for securing digital infrastructures.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Chiron+Hei+HK:wght@400;700&family=Hedvig+Letters+Sans:wght@400;700&family=Quattrocento+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <style>
+        :root {
+            --bg-primary: #0D1117;
+            --color-primary: #58A6FF;
+            --color-secondary: #8B949E;
+            --color-accent: #3FB950;
+            --text-light: #C9D1D9;
+            --text-dark: #1F2328;
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-light);
+            font-family: 'Quattrocento Sans', sans-serif;
+        }
+        
+        .font-heading {
+            font-family: 'Chiron Hei HK', sans-serif;
+        }
+        
+        .font-display {
+            font-family: 'Hedvig Letters Sans', sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(13, 17, 23, 0.95), rgba(13, 17, 23, 0.85));
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(88, 166, 255, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .section-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+        
+        .journey-line {
+            position: relative;
+        }
+        
+        .journey-line::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--color-primary);
+        }
+        
+        .journey-node {
+            position: relative;
+            z-index: 10;
+            background: var(--bg-primary);
+            border: 3px solid var(--color-primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-sm border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-heading text-xl font-bold text-white">
+                    <a href="index.html">Gunjan Chimariya</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-white">Home</a>
+                    <a href="about.html" class="nav-link text-white">About</a>
+                    <a href="projects.html" class="nav-link text-gray-300 hover:text-white">Projects</a>
+                    <a href="contact.html" class="nav-link text-gray-300 hover:text-white">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-300 hover:text-white">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-white">About</a>
+                <a href="projects.html" class="block px-3 py-2 text-gray-300 hover:text-white">Projects</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-300 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="section-reveal">
+                    <h1 class="font-display text-5xl md:text-6xl font-bold mb-6">
+                        About Me
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-6">
+                        A detail-oriented IT professional with a passion for cybersecurity and securing digital infrastructures. 
+                        My journey spans from Nepal to Canada, bringing a global perspective to technical problem-solving.
+                    </p>
+                    <p class="text-lg text-gray-400 mb-8">
+                        With over 2 years of experience resolving 85% of technical issues, improving system security by 30%, 
+                        and reducing downtime by 40%, I thrive in challenging environments where I can leverage my expertise 
+                        in cybersecurity, cloud platforms, and system administration.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="contact.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors text-center">
+                            Let's Work Together
+                        </a>
+                        <a href="projects.html" class="border-2 border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors text-center">
+                            View My Projects
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="section-reveal">
+                    <div class="relative">
+                        <img src="resources/profile-portrait.png" alt="Gunjan Chimariya" class="w-full max-w-md mx-auto rounded-lg shadow-2xl">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent rounded-lg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Journey -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 section-reveal">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">Professional Journey</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    From my early days in Nepal to building a career in Canada's tech landscape
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="journey-line space-y-12">
+                    <div class="flex items-start space-x-8 section-reveal">
+                        <div class="journey-node">
+                            <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-heading text-2xl font-bold mb-2">Education Foundation</h3>
+                            <p class="text-blue-400 font-semibold mb-4">2016 - 2020</p>
+                            <p class="text-gray-300">
+                                Completed Bachelor of Engineering in Computer Science and Engineering at Visvesvaraya Technological University, 
+                                building a strong foundation in software development, algorithms, and system architecture.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-8 section-reveal">
+                        <div class="journey-node">
+                            <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                                <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-heading text-2xl font-bold mb-2">Early Career in Nepal</h3>
+                            <p class="text-blue-400 font-semibold mb-4">2021 - 2022</p>
+                            <p class="text-gray-300">
+                                Started as a Cyber Security Analyst at Mutex Tech Pvt. Ltd. in Kathmandu, where I identified and mitigated 
+                                security vulnerabilities while conducting penetration testing. Completed intensive VTF internship to deepen 
+                                expertise in ethical hacking methodologies.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-8 section-reveal">
+                        <div class="journey-node">
+                            <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-heading text-2xl font-bold mb-2">Canadian Education & Growth</h3>
+                            <p class="text-blue-400 font-semibold mb-4">2022 - 2024</p>
+                            <p class="text-gray-300">
+                                Moved to Canada for postgraduate studies at Georgian College, earning certifications in Information Systems 
+                                Security and Artificial Intelligence. Made Dean's List consistently, demonstrating academic excellence and 
+                                commitment to continuous learning.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-8 section-reveal">
+                        <div class="journey-node">
+                            <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-heading text-2xl font-bold mb-2">Current Role & Future</h3>
+                            <p class="text-blue-400 font-semibold mb-4">2023 - Present</p>
+                            <p class="text-gray-300">
+                                Currently serving as IT Technician at Beesoul LLC, where I continue to enhance system security and reliability. 
+                                Passionate about contributing to open-source projects and staying at the forefront of cybersecurity innovations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section class="py-20 bg-gray-800/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 section-reveal">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">Education & Certifications</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Continuous learning and professional development in emerging technologies
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-800 rounded-lg p-6 card-hover section-reveal">
+                    <div class="text-blue-400 font-semibold mb-2">2022 - 2023</div>
+                    <h3 class="font-heading text-xl font-bold mb-4">Information Systems Security</h3>
+                    <p class="text-green-400 font-semibold mb-2">Georgian College</p>
+                    <p class="text-gray-300 text-sm">
+                        Postgraduate certification focusing on cybersecurity, network security, and system protection methodologies.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-6 card-hover section-reveal">
+                    <div class="text-blue-400 font-semibold mb-2">2024</div>
+                    <h3 class="font-heading text-xl font-bold mb-4">Artificial Intelligence</h3>
+                    <p class="text-green-400 font-semibold mb-2">Georgian College</p>
+                    <p class="text-gray-300 text-sm">
+                        Postgraduate certification in AI architecture and design, including machine learning and neural networks.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-6 card-hover section-reveal">
+                    <div class="text-blue-400 font-semibold mb-2">2016 - 2020</div>
+                    <h3 class="font-heading text-xl font-bold mb-4">Computer Engineering</h3>
+                    <p class="text-green-400 font-semibold mb-2">VTU</p>
+                    <p class="text-gray-300 text-sm">
+                        Bachelor of Engineering in Computer Science and Engineering from Visvesvaraya Technological University.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gray-800 rounded-lg p-4 text-center card-hover section-reveal">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-1">eJPT</h4>
+                    <p class="text-gray-400 text-sm">Jr Penetration Tester</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-4 text-center card-hover section-reveal">
+                    <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-1">AWS</h4>
+                    <p class="text-gray-400 text-sm">Cloud Practitioner</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-4 text-center card-hover section-reveal">
+                    <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-1">VTF</h4>
+                    <p class="text-gray-400 text-sm">Penetration Testing</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-4 text-center card-hover section-reveal">
+                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-1">Jira</h4>
+                    <p class="text-gray-400 text-sm">Service Management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 section-reveal">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">Core Values & Interests</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    The principles that drive my approach to cybersecurity and technology
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center section-reveal">
+                    <div class="value-icon">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-4">Problem Solving</h3>
+                    <p class="text-gray-300">
+                        I approach complex technical challenges with analytical thinking and creative solutions, 
+                        always seeking the most efficient and secure approach.
+                    </p>
+                </div>
+                
+                <div class="text-center section-reveal">
+                    <div class="value-icon">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-4">Continuous Learning</h3>
+                    <p class="text-gray-300">
+                        In the ever-evolving field of cybersecurity, I believe in staying current with emerging 
+                        threats, technologies, and best practices through ongoing education.
+                    </p>
+                </div>
+                
+                <div class="text-center section-reveal">
+                    <div class="value-icon">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-4">Collaboration</h3>
+                    <p class="text-gray-300">
+                        I actively contribute to open-source projects and tech communities, believing that 
+                        knowledge sharing and collaboration drive innovation in cybersecurity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="section-reveal">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">
+                    Let's Build Secure Solutions Together
+                </h2>
+                <p class="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
+                    I'm always interested in discussing cybersecurity innovations, sharing knowledge, 
+                    and collaborating on projects that strengthen digital security.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+                        Get In Touch
+                    </a>
+                    <a href="projects.html" class="border-2 border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+                        View My Work
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-700 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex justify-center space-x-6 mb-4">
+                    <a href="mailto:chimariya.gunjan@gmail.com" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/chimariya-gunjan" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-gray-400 text-sm">
+                    © 2024 Gunjan Chimariya. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with section-reveal class
+        document.querySelectorAll('.section-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Page load animation
+        window.addEventListener('load', function() {
+            anime({
+                targets: 'body',
+                opacity: [0, 1],
+                duration: 1000,
+                easing: 'easeOutQuart'
+            });
+        });
+    </script>
+</body>
+</html>
